@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Health — Book care that fits your day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=search-fix-2">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="emergency-bar">
+  In a medical emergency, call <a href="tel:+15550192045">+1 (555) 019-2045</a> now — lines open 24/7
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#home" class="brand" data-nav>
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none"><path d="M2 20h7l3-9 5 18 4-13 3 9h5l3-5 3 5h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="brand-name">Meridian Health</span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="#home" data-nav>Home<span class="pulse-underline"><svg viewBox="0 0 40 6" width="100%" height="6"><path d="M0 3h10l3-3 3 5 3-4 3 2h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></a>
+      <a href="#departments" data-nav>Departments<span class="pulse-underline"><svg viewBox="0 0 40 6" width="100%" height="6"><path d="M0 3h10l3-3 3 5 3-4 3 2h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></a>
+      <a href="#doctors" data-nav>Doctors<span class="pulse-underline"><svg viewBox="0 0 40 6" width="100%" height="6"><path d="M0 3h10l3-3 3 5 3-4 3 2h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></a>
+      <a href="#appointments" data-nav>My appointments<span class="pulse-underline"><svg viewBox="0 0 40 6" width="100%" height="6"><path d="M0 3h10l3-3 3 5 3-4 3 2h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></a>
+      <a href="#about" data-nav>About<span class="pulse-underline"><svg viewBox="0 0 40 6" width="100%" height="6"><path d="M0 3h10l3-3 3 5 3-4 3 2h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></a>
+      <a href="#contact" data-nav>Contact<span class="pulse-underline"><svg viewBox="0 0 40 6" width="100%" height="6"><path d="M0 3h10l3-3 3 5 3-4 3 2h18" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn btn-theme-toggle" id="themeToggle" aria-label="Switch to dark theme"></button>
+      <div id="authArea">
+        <button class="btn btn-sign-in" id="signInBtn">Sign in</button>
+      </div>
+      <button class="btn btn-book-header" id="headerBookBtn"><span>Book appointment</span></button>
+      <button class="icon-btn nav-toggle btn-menu-open" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel__backdrop" id="mobileBackdrop"></div>
+  <div class="mobile-panel__sheet">
+    <div class="mobile-panel__top">
+      <button class="icon-btn btn-menu-close" id="mobileClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <a href="#home" data-nav class="main-mobile-link">Home</a>
+    <a href="#departments" data-nav class="main-mobile-link">Departments</a>
+    <a href="#doctors" data-nav class="main-mobile-link">Doctors</a>
+    <a href="#appointments" data-nav class="main-mobile-link">My appointments</a>
+    <a href="#profile" data-nav class="main-mobile-link" id="mobileProfileLink" hidden>My profile</a>
+    <a href="#about" data-nav class="main-mobile-link">About</a>
+    <a href="#contact" data-nav class="main-mobile-link">Contact</a>
+    <div class="mobile-extra">
+      <button class="btn btn--block btn-mobile-sign-in" id="mobileSignIn">Sign in</button>
+      <button class="btn btn--block btn-mobile-book" id="mobileBook">Book appointment</button>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="view is-active" id="view-home">
+    <div class="wrap hero">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Same-week appointments</span>
+          <h1>See the right doctor,<br><em>this week.</em></h1>
+          <p class="hero-sub">Real-time availability across 8 departments and 400+ doctors, in 5 hospitals. Pick a time that works, and it's yours — no phone tag, no hold music.</p>
+          <div class="hero-cta-row">
+            <button class="btn btn-find-time" data-open-booking><span>Find a time</span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="btn btn-browse-doctors" data-nav-btn="doctors">Browse doctors</button>
+          </div>
+          <div class="hero-trust">
+            <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.4 0 3.8 1.3 6 3.5C14.2 5.3 15.6 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z" stroke="currentColor" stroke-width="1.8"/></svg> 400+ specialists</div>
+            <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> 24/7 emergency care</div>
+            <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M20.4 12A8.4 8.4 0 1 1 12 3.6 8.4 8.4 0 0 1 20.4 12z" stroke="currentColor" stroke-width="1.8"/></svg> 98% patient satisfaction</div>
+          </div>
+        </div>
+
+        <div class="book-card" id="heroBookCard">
+          <div class="book-card__head">
+            <h3>Check availability</h3>
+            <span class="book-card__live"><span class="live-dot"></span> LIVE SLOTS</span>
+          </div>
+          <div class="field">
+            <label for="heroHospital">Hospital</label>
+            <div class="select-wrap">
+              <select id="heroHospital"></select>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label for="heroDept">Department</label>
+            <div class="select-wrap">
+              <select id="heroDept"></select>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label for="heroPriceSort">Sort doctors by price</label>
+            <div class="select-wrap">
+              <select id="heroPriceSort"></select>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label for="heroDoctor">Doctor</label>
+            <div class="select-wrap">
+              <select id="heroDoctor"></select>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label>Day</label>
+            <div class="day-strip" id="heroDayStrip"></div>
+          </div>
+          <div class="field" style="margin-bottom:22px;">
+            <label>Available times</label>
+            <div class="slot-grid" id="heroSlotGrid"></div>
+          </div>
+          <button class="btn btn--block btn-hero-continue" id="heroContinueBtn" disabled><span>Select a time to continue</span></button>
+        </div>
+      </div>
+      <svg class="pulse-bg" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 45 H300 L330 10 L360 80 L390 45 H500 L525 25 L550 65 L575 45 H700 L730 10 L760 80 L790 45 H1200" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    </div>
+
+    <div class="wrap stat-bar">
+      <div class="stat-grid">
+        <div><div class="stat-num">8</div><div class="stat-label">Departments</div></div>
+        <div><div class="stat-num">400+</div><div class="stat-label">Doctors on staff</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-label">Emergency care</div></div>
+        <div><div class="stat-num">98%</div><div class="stat-label">Patient satisfaction</div></div>
+      </div>
+    </div>
+
+    <div class="wrap section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Departments</span>
+          <h2>Care organized around you, not our org chart</h2>
+        </div>
+        <button class="btn btn-view-all-departments" data-nav-btn="departments">View all departments</button>
+      </div>
+      <div class="dept-grid" id="homeDeptGrid"></div>
+    </div>
+
+    <div class="wrap section" style="padding-top:0;">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">How it works</span>
+          <h2>Three steps, no waiting room hold music</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Choose a specialist &amp; time</h3>
+          <p>Filter by hospital, department and time, see real openings, and pick whatever slot actually fits your week.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Confirm your details</h3>
+          <p>Tell us why you're coming in. Returning patients skip straight to picking a time.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Get instant confirmation &amp; your serial</h3>
+          <p>Your appointment and queue serial are locked in immediately, with live tracking on the day of your visit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap section" style="padding-top:0;">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Featured doctors</span>
+          <h2>Meet a few of our specialists</h2>
+        </div>
+        <button class="btn btn-see-all-doctors" data-nav-btn="doctors">See all doctors</button>
+      </div>
+      <div class="doctor-grid" id="homeDoctorGrid"></div>
+    </div>
+
+    <div class="wrap section" style="padding-top:0;padding-bottom:96px;">
+      <span class="eyebrow" style="display:flex;justify-content:center;">Patients say</span>
+      <div class="carousel" id="homeCarousel"></div>
+    </div>
+
+    <div class="wrap" style="padding-bottom:96px;">
+      <div class="cta-banner">
+        <div>
+          <h2>Not sure where to start?</h2>
+          <p>Tell us your symptoms and we'll point you to the right department in under a minute.</p>
+        </div>
+        <button class="btn btn-start-booking" data-open-booking><span>Start a booking</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-departments">
+    <div class="wrap section">
+      <span class="eyebrow">All departments</span>
+      <h2 style="max-width:26ch;">Every specialty, one booking flow</h2>
+      <p style="max-width:56ch;margin-bottom:40px;">Pick a department to see the doctors who cover it, their next open slot, and how to reach them.</p>
+      <div class="dept-grid" id="fullDeptGrid"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-doctors">
+    <div class="wrap section">
+      <span class="eyebrow">Find a doctor</span>
+      <h2 style="max-width:26ch;margin-bottom:28px;">Browse specialists by availability</h2>
+      <div class="filter-bar">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" class="text-input" id="doctorSearch" placeholder="Search by name or specialty">
+        </div>
+        <div class="select-wrap" style="width:auto;">
+          <select id="doctorHospitalFilter" style="min-width:190px;"></select>
+          <svg viewBox="0 0 24 24" fill="none" style="right:14px;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="select-wrap" style="width:auto;">
+          <select id="doctorDeptFilter" style="min-width:190px;"></select>
+          <svg viewBox="0 0 24 24" fill="none" style="right:14px;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="select-wrap" style="width:auto;">
+          <select id="doctorSort" style="min-width:180px;">
+            <option value="soonest">Sort: soonest available</option>
+            <option value="rating">Sort: highest rated</option>
+            <option value="fee-low">Sort: fee (low to high)</option>
+            <option value="name">Sort: name (A–Z)</option>
+          </select>
+          <svg viewBox="0 0 24 24" fill="none" style="right:14px;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="result-count" id="doctorResultCount"></span>
+      </div>
+      <div class="doctor-grid" id="fullDoctorGrid"></div>
+      <div id="doctorLoadMoreWrap"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-appointments">
+    <div class="wrap section">
+      <span class="eyebrow">My appointments</span>
+      <div class="section-head" style="margin-bottom:30px;">
+        <h2 style="max-width:26ch;">Your upcoming and past visits</h2>
+        <button class="btn btn-book-new-appointment" data-open-booking><span>Book a new appointment</span></button>
+      </div>
+      <div id="apptListWrap"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-profile">
+    <div class="wrap section">
+      <span class="eyebrow">My profile</span>
+      <div id="profileWrap"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-about">
+    <div class="wrap about-hero">
+      <div>
+        <span class="eyebrow">About Meridian</span>
+        <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem);max-width:16ch;">Built by clinicians who were tired of hold music too</h2>
+        <p>Meridian Health started in a single clinic in 2011 with one rule: a patient should never have to call three times to book one appointment. Fifteen years on, that rule still runs the place — now across 8 departments, 5 hospitals and 400 doctors.</p>
+        <p>Every doctor on our platform sets their own real availability. What you see is what you get, down to the minute — and down to your place in the queue.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="stat-num">2011</div><div class="stat-label">Founded</div></div>
+          <div class="about-stat"><div class="stat-num">180k+</div><div class="stat-label">Patients cared for</div></div>
+          <div class="about-stat"><div class="stat-num">5</div><div class="stat-label">Hospitals</div></div>
+          <div class="about-stat"><div class="stat-num">4.9/5</div><div class="stat-label">Average rating</div></div>
+        </div>
+      </div>
+      <div class="timeline-art">
+        <span class="eyebrow" style="color:var(--accent-bright);">Our pace</span>
+        <h3 style="color:#fff;font-size:1.4rem;">A booking should take minutes, not days.</h3>
+        <svg class="pulse-bg" viewBox="0 0 500 90" preserveAspectRatio="none"><path d="M0 45 H120 L140 15 L165 75 L190 45 H260 L280 25 L300 65 L320 45 H500" stroke="currentColor" stroke-width="2.4" fill="none"/></svg>
+        <p style="color:#9FBBB3;margin:0;">Average time from search to confirmed slot: <strong style="color:#fff;">2 minutes 40 seconds.</strong></p>
+      </div>
+    </div>
+
+    <div class="wrap section" style="padding-top:0;">
+      <span class="eyebrow" style="display:flex;justify-content:center;">In their words</span>
+      <div class="carousel" id="aboutCarousel"></div>
+      <div class="accred-row">
+        <span>Joint Commission Accredited</span>
+        <span>ISO 9001 Certified</span>
+        <span>Magnet Recognized</span>
+        <span>HIPAA Compliant</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-contact">
+    <div class="wrap section">
+      <span class="eyebrow">Get in touch</span>
+      <h2 style="max-width:22ch;margin-bottom:36px;">Questions before you book?</h2>
+      <div class="contact-grid">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field" id="fieldName">
+            <label for="cName">Full name</label>
+            <input type="text" class="text-input" id="cName" placeholder="Jordan Lee">
+            <span class="error-text">Enter your full name.</span>
+          </div>
+          <div class="field" id="fieldEmail">
+            <label for="cEmail">Email</label>
+            <input type="email" class="text-input" id="cEmail" placeholder="you@example.com">
+            <span class="error-text">Enter a valid email address.</span>
+          </div>
+          <div class="field" id="fieldMsg">
+            <label for="cMsg">Message</label>
+            <textarea id="cMsg" placeholder="How can we help?"></textarea>
+            <span class="error-text">Tell us a little about what you need.</span>
+          </div>
+          <button type="submit" class="btn btn--block btn-send-message"><span>Send message</span></button>
+        </form>
+
+        <div>
+          <div class="contact-info-card">
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .6a2 2 0 0 1 1.7 2z" stroke="currentColor" stroke-width="1.8"/></svg>
+              <div><h4>Call the front desk</h4><a href="tel:+15550143290">+1 (555) 014-3290</a></div>
+            </div>
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 6l8 7 8-7" stroke="currentColor" stroke-width="1.8"/></svg>
+              <div><h4>Email us</h4><a href="mailto:care@meridianhealth.example">care@meridianhealth.example</a></div>
+            </div>
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+              <div><h4>Visit us</h4><a href="https://www.google.com/maps/search/?api=1&query=Meridian+Health+Medical+Center" target="_blank" rel="noopener">482 Harbor Ridge Ave, get directions</a></div>
+            </div>
+            <div class="map-art">
+              <svg viewBox="0 0 400 180" width="100%" style="display:block;background:var(--mint-100);">
+                <path d="M0 40 H400 M0 100 H400 M60 0 V180 M340 0 V180" stroke="var(--line)" stroke-width="2"/>
+                <path d="M0 130 C100 90 180 150 260 110 S 360 60 400 90" stroke="var(--teal-500)" stroke-width="3" fill="none" opacity=".6"/>
+                <circle cx="200" cy="95" r="9" fill="var(--coral)"/>
+                <path d="M200 95 l0 -22" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M2 20h7l3-9 5 18 4-13 3 9h5l3-5 3 5h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Meridian Health
+        </div>
+        <p>Real-time appointments across 8 departments and 400+ doctors. Care that fits your calendar, not the other way around.</p>
+        <div class="social-row">
+          <button class="btn-social" aria-label="Instagram" data-social="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/></svg></button>
+          <button class="btn-social" aria-label="LinkedIn" data-social="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 10v7M8 7v.01M12 17v-4.5a2.5 2.5 0 0 1 5 0V17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+          <button class="btn-social" aria-label="X" data-social="X"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="#departments" data-nav>Departments</a>
+        <a href="#doctors" data-nav>Doctors</a>
+        <a href="#appointments" data-nav>My appointments</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#about" data-nav>About</a>
+        <a href="#contact" data-nav>Contact</a>
+        <a href="#" data-toast="Careers page coming soon">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Staff</h5>
+        <a href="admin.html">Front-desk queue console</a>
+        <a href="#" data-toast="Privacy policy coming soon">Privacy policy</a>
+        <a href="#" data-toast="Terms coming soon">Terms of care</a>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h5>Health tips, monthly</h5>
+        <p style="margin-bottom:0;">No spam, just one useful email a month.</p>
+        <form id="newsletterForm" class="newsletter-row">
+          <input type="email" class="text-input" placeholder="Email address" required id="newsletterEmail">
+          <button class="btn btn--sm btn-newsletter-join" type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Meridian Health. All rights reserved.</span>
+      <span>Meridian Health is a fictional demo platform.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="bookingOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+    <div class="modal-head">
+      <h3 id="bookingTitle">Book an appointment</h3>
+      <button class="modal-close btn-close-booking" id="bookingClose" aria-label="Close booking">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="stepper" id="bookingStepper">
+      <i data-step="1"></i><i data-step="2"></i><i data-step="3"></i><i data-step="4"></i>
+    </div>
+    <div class="modal-body" id="bookingBody"></div>
+    <div class="modal-foot" id="bookingFoot"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="signInOverlay">
+  <div class="modal" style="max-width:400px;" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+    <div class="modal-head">
+      <h3 id="signInTitle">Sign in to Meridian</h3>
+      <button class="modal-close btn-close-sign-in" id="signInClose" aria-label="Close sign in">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="radio-row" style="margin-bottom:18px;">
+        <button type="button" class="radio-pill is-selected" id="authTabSignIn">Sign in</button>
+        <button type="button" class="radio-pill" id="authTabSignUp">Create account</button>
+      </div>
+
+      <form id="signInForm" novalidate>
+        <div class="field" id="fieldSiId">
+          <label for="siId">Email or username</label>
+          <input type="text" class="text-input" id="siId" placeholder="you@example.com or your username" autocomplete="username" maxlength="150">
+          <div class="error-text">Enter your email or username.</div>
+        </div>
+        <div class="field" id="fieldSiPassword">
+          <label for="siPassword">Password</label>
+          <input type="password" class="text-input" id="siPassword" autocomplete="current-password" maxlength="64">
+          <div class="error-text">Enter your password.</div>
+        </div>
+        <label class="show-password"><input type="checkbox" data-show-password> Show password</label>
+        <div class="field has-error form-message" hidden><div class="error-text"></div></div>
+        <button class="btn btn--block btn-sign-in-submit" type="submit"><span>Sign in</span></button>
+      </form>
+
+      <form id="signUpForm" novalidate hidden>
+        <div class="field" id="fieldSuUsername">
+          <label for="suUsername">Username</label>
+          <input type="text" class="text-input" id="suUsername" placeholder="e.g. rahim_uddin" autocomplete="username" maxlength="30">
+          <div class="error-text">Username must be 3 to 30 characters: letters, numbers, . _ - (start with a letter or number).</div>
+        </div>
+        <div class="field" id="fieldSuEmail">
+          <label for="suEmail">Email</label>
+          <input type="email" class="text-input" id="suEmail" placeholder="you@example.com" autocomplete="email" maxlength="150">
+          <div class="error-text">Enter a valid email like you@example.com.</div>
+        </div>
+        <div class="field" id="fieldSuPassword">
+          <label for="suPassword">Password</label>
+          <input type="password" class="text-input" id="suPassword" autocomplete="new-password" maxlength="64">
+          <div class="error-text"></div>
+        </div>
+        <div class="field" id="fieldSuConfirm">
+          <label for="suConfirm">Confirm password</label>
+          <input type="password" class="text-input" id="suConfirm" autocomplete="new-password" maxlength="64">
+          <div class="error-text">The two passwords do not match.</div>
+        </div>
+        <p class="password-hint">8 to 64 characters with an uppercase letter, a lowercase letter, a number and a special character (like ! @ # $ %). No spaces.</p>
+        <label class="show-password"><input type="checkbox" data-show-password> Show password</label>
+        <div class="field has-error form-message" hidden><div class="error-text"></div></div>
+        <button class="btn btn--block btn-sign-up-submit" type="submit"><span>Create account</span></button>
+      </form>
+
+      <form id="verifyForm" novalidate hidden>
+        <p class="verify-intro">We sent a 6-digit code to <strong id="verifyEmailText"></strong>. Enter it below to finish. The code works for 10 minutes.</p>
+        <div class="field" id="fieldVfCode">
+          <label for="vfCode">Verification code</label>
+          <input type="text" class="text-input otp-input" id="vfCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+          <div class="error-text">Enter the 6-digit code from the e-mail.</div>
+        </div>
+        <div class="field has-error form-message" hidden><div class="error-text"></div></div>
+        <button class="btn btn--block btn-verify-submit" type="submit"><span>Verify and continue</span></button>
+        <div class="verify-links">
+          <button type="button" class="link-btn" id="vfResend">Resend code</button>
+          <button type="button" class="link-btn" id="vfBack">Use a different e-mail</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="queueOverlay">
+  <div class="modal" style="max-width:420px;" role="dialog" aria-modal="true" aria-labelledby="queueTitle">
+    <div class="modal-head">
+      <h3 id="queueTitle">Live queue tracker</h3>
+      <button class="modal-close btn-close-queue" id="queueClose" aria-label="Close live tracker">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="queueBody"></div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script src="js/data.js?v=search-fix-2"></script>
+<script src="js/api.js?v=search-fix-2"></script>
+<script src="js/store.js?v=search-fix-2"></script>
+<script src="js/site.js?v=search-fix-2"></script>
+</body>
+</html>

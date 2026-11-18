@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Health — Front-desk queue console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=doctor-names">
+</head>
+<body>
+
+<div class="admin-shell">
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <a href="admin.html" class="admin-brand">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M2 20h7l3-9 5 18 4-13 3 9h5l3-5 3 5h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Meridian <span class="brand-tag">Front desk</span>
+      </a>
+      <span class="admin-clock" id="adminClock"></span>
+      <button class="icon-btn btn-admin-theme-toggle" id="themeToggle" aria-label="Switch to dark theme"></button>
+      <a href="index.html" class="btn admin-back btn-admin-back">Back to patient site</a>
+      <button class="btn btn-admin-logout" id="adminLogoutBtn" hidden>Sign out</button>
+    </div>
+  </header>
+
+  <div class="admin-wrap">
+    <div class="admin-top">
+      <div>
+        <h1>Today's live queues</h1>
+        <p>Call the next patient in, or release the one currently in the room — the change shows up instantly on that patient's tracker on the Meridian Health site. Only today's queue can be managed here.</p>
+      </div>
+    </div>
+
+    <div class="admin-stats">
+      <div class="admin-stat-card" data-stat="doctors" role="button" tabindex="0">
+        <div class="stat-num" id="statDoctors">0</div><div class="stat-label">Doctors shown</div>
+        <span class="stat-card-hint">View list &rarr;</span>
+      </div>
+      <div class="admin-stat-card" data-stat="patients" role="button" tabindex="0">
+        <div class="stat-num" id="statPatients">0</div><div class="stat-label">Patients booked today</div>
+        <span class="stat-card-hint">View list &rarr;</span>
+      </div>
+      <div class="admin-stat-card" data-stat="inroom" role="button" tabindex="0">
+        <div class="stat-num" id="statInRoom">0</div><div class="stat-label">Currently in a room</div>
+        <span class="stat-card-hint">View list &rarr;</span>
+      </div>
+      <div class="admin-stat-card" data-stat="waiting" role="button" tabindex="0">
+        <div class="stat-num" id="statWaiting">0</div><div class="stat-label">Still waiting</div>
+        <span class="stat-card-hint">View list &rarr;</span>
+      </div>
+    </div>
+
+    <div class="admin-filters">
+      <div class="search-field" style="max-width:none;">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="text" class="text-input" id="filterSearch" placeholder="Search doctor by name">
+      </div>
+      <div class="select-wrap">
+        <select id="filterHospital"></select>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="select-wrap">
+        <select id="filterDept"></select>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--ink-soft);white-space:nowrap;padding:0 4px;">
+        <input type="checkbox" id="filterActiveOnly" style="width:16px;height:16px;">
+        Only doctors with patients today
+      </label>
+    </div>
+
+    <div class="queue-board" id="queueBoard"></div>
+    <div id="adminLoadMoreWrap"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="statDetailOverlay">
+  <div class="modal" style="max-width:560px;" role="dialog" aria-modal="true" aria-labelledby="statDetailTitle">
+    <div class="modal-head">
+      <h3 id="statDetailTitle">Details</h3>
+      <button class="modal-close btn-close-details" id="statDetailClose" aria-label="Close details">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="statDetailBody"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="adminLoginOverlay">
+  <div class="modal" style="max-width:400px;" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+    <div class="modal-head">
+      <h3 id="adminLoginTitle">Front-desk sign in</h3>
+    </div>
+    <div class="modal-body">
+      <form id="adminLoginForm">
+        <div class="field">
+          <label for="adminUsername">Username</label>
+          <input type="text" class="text-input" id="adminUsername" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="adminPassword">Password</label>
+          <input type="password" class="text-input" id="adminPassword" autocomplete="current-password" required>
+        </div>
+        <p class="admin-login-error" id="adminLoginError" hidden></p>
+        <button class="btn btn--block btn-admin-login" type="submit"><span>Sign in</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script src="js/data.js?v=doctor-names"></script>
+<script src="js/api.js?v=doctor-names"></script>
+<script src="js/store.js?v=doctor-names"></script>
+<script src="js/admin.js?v=doctor-names"></script>
+</body>
+</html>
