@@ -1,5 +1,0 @@
-api/config.php
-database/*.sqlite
-database/mail-outbox.log
-.DS_Store
-Thumbs.db
